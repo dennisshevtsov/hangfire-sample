@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  hangfire-sample-web:
+    image: hangfire-sample-web
+    container_name: hangfire-sample-web
+    build:
+      context: .
+      dockerfile: src/HangfireSample.Web/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=5001
+    ports:
+      - "5001:5001"
