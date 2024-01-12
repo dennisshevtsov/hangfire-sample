@@ -8,7 +8,17 @@ services:
       context: .
       dockerfile: src/HangfireSample.Web/Dockerfile
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=5001
+      - CONNECTIONSTRINGS__HANGFIRE=Host=hangfire-sample-db;Port=5432;Database=hangfire-sample-db;Username=dev;Password=dev;Include Error Detail=true
     ports:
       - "5001:5001"
+    depends_on:
+      - hangfire-sample-db
+  hangfire-sample-db:
+    container_name: hangfire-sample-db
+    image: postgres:16
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: dev
