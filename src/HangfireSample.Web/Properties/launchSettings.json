@@ -11,7 +11,8 @@
       "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
       "environmentVariables": {
-        "ASPNETCORE_HTTP_PORTS": "5001"
+        "ASPNETCORE_HTTP_PORTS": "5001",
+        "CONNECTIONSTRINGS__HANGFIRE": "Host=hangfire-sample-db;Port=5432;Database=hangfire-sample-db;Username=dev;Password=dev;Include Error Detail=true"
       },
       "publishAllPorts": true
     }
