@@ -6,7 +6,7 @@
     <DockerPublishLocally>False</DockerPublishLocally>
     <ProjectGuid>3bfbf05e-7eeb-4ef5-812b-d28013ec6e1a</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
-    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}</DockerServiceUrl>
+    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/hangfire</DockerServiceUrl>
     <DockerServiceName>hangfire-sample-web</DockerServiceName>
     <DockerComposeProjectName>hangfire-sample</DockerComposeProjectName>
   </PropertyGroup>
