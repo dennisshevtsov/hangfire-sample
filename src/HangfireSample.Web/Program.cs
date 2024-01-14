@@ -7,6 +7,7 @@ using Hangfire.PostgreSql;
 using HangfireSample.Web;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+builder.Services.AddTransient<SimpleJob>();
 builder.Services.AddHangfire(configuration =>
   configuration.UsePostgreSqlStorage(options => options.UseNpgsqlConnection(builder.Configuration.GetConnectionString("HANGFIRE"))));
 builder.Services.AddHangfireServer();
@@ -20,5 +21,7 @@ app.UseHangfireDashboard
     Authorization = [new AnonymousAuthorizationFilter()],
   }
 );
+BackgroundJob.Schedule<SimpleJob>(job => job.Execute("BackgroudJob"), TimeSpan.FromSeconds(10));
+RecurringJob.AddOrUpdate<SimpleJob>("RecurringJob", job => job.Execute("RecurringJob"), Cron.Minutely);
 app.MapGet("/", () => "Hangfire sample working...");
 app.Run();
