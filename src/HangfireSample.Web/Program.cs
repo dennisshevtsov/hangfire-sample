@@ -9,6 +9,7 @@ using HangfireSample.Web;
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHangfire(configuration =>
   configuration.UsePostgreSqlStorage(options => options.UseNpgsqlConnection(builder.Configuration.GetConnectionString("HANGFIRE"))));
+builder.Services.AddHangfireServer();
 
 WebApplication app = builder.Build();
 app.UseHangfireDashboard
